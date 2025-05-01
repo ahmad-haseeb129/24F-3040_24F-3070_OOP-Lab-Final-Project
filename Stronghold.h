@@ -3,7 +3,12 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <map>
 using namespace std;
+
+// Forward declarations of utility functions
+void displayEvent(const char* event, const char* description);
+void displayBox(const char* title);
 
 // Base class for social classes
 class SocialClass {
@@ -13,6 +18,10 @@ public:
     int wealth;
     int influence;
     int population;
+    int birthRate;
+    int deathRate;
+    int foodConsumption;
+    bool isRevolting;
 
     SocialClass(const char* name);
     ~SocialClass();
@@ -22,20 +31,10 @@ public:
 
 class Population {
 public:
-    int totalPopulation;
-    int birthRate;
-    int deathRate;
-    int foodConsumption;
-    bool isRevolting;
-    int happiness;
-    int* ageGroups;
-    int diseaseRate;
+    int totalPopulation;  // Just maintains the total count
 
     Population();
     ~Population();
-    void updatePopulation(int food);
-    void calculateGrowth();
-    void checkRevoltConditions();
 };
 
 class Military {
@@ -70,7 +69,7 @@ public:
     ~Leadership();
     void holdElection();
     void checkStability();
-    void implementPolicy();
+    void implementPolicy(int c);
 };
 
 class Economy {
@@ -78,9 +77,6 @@ public:
     int treasury;
     int taxRate;
     int inflation;
-    int* marketPrices;
-    int marketSize;
-    int* tradingPartners;
 
     Economy();
     ~Economy();
@@ -91,18 +87,36 @@ public:
 
 class Bank {
 public:
-    int reserves;
-    int* loans;
-    int loanCount;
-    int interestRate;
-    bool isCorrupt;
-    int* transactions;
+    static const int MAX_LOANS = 100;  // Maximum number of loans
+    double treasury;
+    double interestRate;
+    
+    // Arrays for loan management
+    string borrowers[MAX_LOANS];
+    double loanAmounts[MAX_LOANS];
+    int loanDurations[MAX_LOANS];
+    int activeLoanCount;
+    
+    // Fraud detection
+    int fraudAttempts;
+    double stolenAmount;
 
-    Bank();
+    Bank(double initialFunds = 10000, double rate = 0.1);
     ~Bank();
-    void processLoan(int amount);
-    void auditAccounts();
-    void updateInterestRates();
+
+    void giveLoan(const string& borrower, double amount);
+    void collectInterest(const string& borrower);
+    void repayLoan(const string& borrower, double amount);
+    void simulateFraud();
+    void conductAudit();
+    void updateLoans();
+    
+    // Getters
+    double getTreasury() const { return treasury; }
+    double getInterestRate() const { return interestRate; }
+    double getLoanAmount(const string& borrower) const;
+    
+    void displayStatus() const;
 };
 
 class Resources {
@@ -112,12 +126,17 @@ public:
     int* productionRates;
     int* consumptionRates;
     int* storage;
+    float* productionEfficiency;
+    bool* hasGathered;
 
     Resources();
     ~Resources();
     void gather();
-    void consume();
+    void gatherResource(int resourceType);
+    void resetGatherStatus();
+    void consume(SocialClass* peasants, SocialClass* merchants, SocialClass* nobles);
     void trade();
+    void updateProductionEfficiency(SocialClass* peasants, SocialClass* merchants);
 };
 
 class EventSystem
@@ -127,10 +146,12 @@ class EventSystem
         int* eventSeverity;
         int eventCount;
         int* eventDuration;
+        string* eventDescriptions;
 
         EventSystem();
         ~EventSystem();
         void triggerRandomEvent();
         void resolveEvents();
-        void calculateImpact();
+        void calculateImpact(Resources* res, Population* pop, Economy* eco, Military* mil,
+                           class SocialClass* peasants, class SocialClass* merchants, SocialClass* nobles);
 };
