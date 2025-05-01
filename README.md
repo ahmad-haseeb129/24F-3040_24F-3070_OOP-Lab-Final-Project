@@ -1,39 +1,114 @@
 # 24F-3040_24F-3070_OOP-Lab-Final-Project
 
 # Stronghold: Medieval Kingdom Simulator
+## Module 1: Core Game Systems
 
-## Project Overview
-A text-based medieval kingdom management simulator where players manage resources, population, military, and economy of their realm. Built using C++ with focus on object-oriented design principles.
+### Current Features
 
-## Key Features
+#### 1. Social Class System
+- Three distinct classes: Peasants, Merchants, and Nobles
+- Each class has unique attributes:
+  - Population
+  - Happiness
+  - Wealth
+  - Influence
+  - Birth/Death rates
+  - Food consumption
+- Inter-class interactions and relationships
+- Class-specific reactions to policies and events
 
-### Core Systems
-- **Social Classes**: Manage Peasants, Merchants, and Nobles with unique attributes
-- **Resources**: Handle Food, Wood, Stone, and Steel production/consumption
-- **Economy**: Treasury management, tax system, and banking
-- **Military**: Train troops, manage morale, and handle military operations
-- **Events**: Dynamic event system affecting kingdom stability
+#### 2. Resource Management
+- Four key resources:
+  - Food
+  - Wood
+  - Stone
+  - Steel
+- Resource gathering and production
+- Storage system
+- Production and consumption rates
+- Resource trading
+- Production efficiency system
 
-### Game Mechanics
+#### 3. Economic System
+- Treasury management
+- Tax collection system
+- Inflation mechanics
+- Investment options:
+  - Resource production
+  - Immediate resource gains
+  - Production rate improvements
+
+#### 4. Military System
+- Troop management
+- Training system
+- Morale system
+- Corruption mechanics
+- Weapon management
+- Recruitment system
+- Ration distribution
+- Anti-corruption campaigns
+
+#### 5. Banking System
+- Loan system
+- Interest rates
+- Fraud detection
+- Audit system
+- Treasury management
+- Loan tracking and repayment
+
+#### 6. Leadership System
+- Election mechanics
+- Policy implementation
+- Population addressing
+- Crisis management
+- Coup risk system
+- Popularity tracking
+- Term management
+
+#### 7. Event System
+- Random event generation
+- Event severity levels
+- Event duration tracking
+- Event impact calculation
+- Multiple event types affecting different aspects
+
+#### 8. Save/Load System
+- Complete game state saving
+- Game state loading
+- Score tracking and logging
+
+### Gameplay Features
 - Turn-based gameplay
-- Save/Load functionality
-- Detailed kingdom reports
-- Resource trading system
-- Population growth dynamics
+- Multiple management options
+- Detailed status reports
+- Resource gathering and management
+- Military training and management
+- Economic decision making
+- Social class balance
+- Crisis management
+- Banking operations
 
-## Technical Implementation
-- Language: C++
-- Object-Oriented Design
-- File I/O for game persistence
-- Text-based user interface
-- Dynamic memory management
+## Module 2: Planned Features and Improvements
 
-## How to Play
-1. Start new game or load saved game
-2. Each turn:
-   - Manage resources
-   - Control military
-   - Adjust economy
-   - Make leadership decisions
-3. Monitor kingdom progress through detailed reports
-4. Save progress at any time
+### 1. Encapsulation
+- Implement proper access modifiers
+- Create getter/setter methods
+- Improve data hiding
+- Strengthen class boundaries
+- Add validation methods
+
+### 2. Templates
+- Generic container classes for resources
+- Template-based event system
+- Generic management systems
+- Flexible data storage
+
+### 3. Exception Handling
+- Resource management exceptions
+- Economic transaction validation
+- Military operation safety checks
+- File operation error handling
+
+### Future Improvements
+1. Enhanced UI with better visual feedback and organization
+2. Diplomatic relations between neighboring kingdoms
