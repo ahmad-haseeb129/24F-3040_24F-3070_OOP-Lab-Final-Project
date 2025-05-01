@@ -112,3 +112,9 @@
 ### Future Improvements
 1. Enhanced UI with better visual feedback and organization
 2. Diplomatic relations between neighboring kingdoms
+
+## How to Run the Game
+1. Create a C++ project on VS
+2. Add the .cpp and .h files to the project
+3. Place the .txt files in the same repo/folder as your project.
+4. Run the code on VS
